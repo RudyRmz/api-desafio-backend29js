@@ -44,7 +44,7 @@ module.exports = {
             description: req.body.description,
             title: req.body.title,
             url: req.body.url,
-            tags: req.body.tags,
+            //tags: req.body.tags,
         },
         { new: true }
         );
