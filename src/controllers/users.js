@@ -1,4 +1,4 @@
-//const Users = require("../models/users") //siempre que se importen modelos deben empezar por mayuscuylas
+const Users = require("../models/users") //siempre que se importen modelos deben empezar por mayuscuylas
 //const jwt = require('../utils/jwt')
 
 
