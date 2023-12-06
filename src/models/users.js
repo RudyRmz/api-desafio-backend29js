@@ -2,12 +2,18 @@ const mongoose = require("mongoose")
 
 //Esquema 
 const userSchema = new mongoose.Schema({
-    // first_name: {
-    //     type: String
-    // },
-    // last_name: {
-    //     type: String
-    // },
+    avatar: {
+        required: true,  
+        type: String
+    },
+    name: {
+        required: true,  
+        type: String
+    },
+    user_name: {
+        required: true,  
+        type: String
+    },
     email: {
         type: String,
         unique : true,
@@ -28,11 +34,11 @@ const userSchema = new mongoose.Schema({
     //         message: '{VALUE} is not supported'
     //     }
     // },
-    role: {
-        type: String,
-        default: "Writer",
-        enum: ["Admin", "Writer"]
-    }
+    // role: {
+    //     type: String,
+    //     default: "Writer",
+    //     enum: ["Admin", "Writer"]
+    // }
 });
 
 const Users =  mongoose.model("Users", userSchema) // Modelo 
