@@ -2,12 +2,10 @@ const mongoose = require("mongoose")
 
 //Esquema 
 const postSchema = new mongoose.Schema({
-    date: {
-        required: true,  
+    date: { 
         type: String
     },
-    dateMiliseconds: {
-        required: true,  
+    dateMiliseconds: {  
         type: Number
     },
     reactions: { 
@@ -26,7 +24,7 @@ const postSchema = new mongoose.Schema({
         type: String
     },
     tags: {  
-        type: String
+        type: Array
     }, 
 });
 
