@@ -14,8 +14,8 @@ module.exports = {
     },
     getAll: async (req, res, next)=>{
         try {
-            //let users = await Users.find()
-            next({ status: 200, send: { msg: "Usuarios encontrados", data: [] } })
+            let users = await Users.find()
+            next({ status: 200, send: { msg: "Usuarios encontrados", data: users } })
         } catch (error) {
             next({ status: 404, send: { msg: "Usuarios no encontrados" } })
         }
