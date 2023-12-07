@@ -4,18 +4,18 @@ const Users = require("../models/users") //siempre que se importen modelos deben
 
 module.exports = {
     getById: async (req, res, next)=>{
-        //const { id } = req.params
+        const { id } = req.params
         try {
-            //let users = await Users.findById(id)
-            next({ status: 200, send: { msg: "Usuario encontrado", data: {} } })
+            let users = await Users.findById(id)
+            next({ status: 200, send: { msg: "Usuario encontrado", data: users } })
         } catch (error) {
             next({ status: 404, send: { msg: "Usuario no encontrado" } })
         }
     },
     getAll: async (req, res, next)=>{
         try {
-            //let users = await Users.find()
-            next({ status: 200, send: { msg: "Usuarios encontrados", data: [] } })
+            let users = await Users.find()
+            next({ status: 200, send: { msg: "Usuarios encontrados", data: users } })
         } catch (error) {
             next({ status: 404, send: { msg: "Usuarios no encontrados" } })
         }
@@ -29,16 +29,16 @@ module.exports = {
         }
     },
     delete: async(req, res, next)=>{
-        //const { id } = req.params;
+        const { id } = req.params;
     try {
-        //let users = await Users.findByIdAndDelete(id)
+        let users = await Users.findByIdAndDelete(id)
         next({status: 200, send: { msg: "Usuario eliminado correctamente" }})
     } catch (error) {
         next({ status: 400, send: { msg: "No se pudo eliminar el usuario", err: error } })
     }
     }, 
     put: async(req, res, next)=>{
-       // const { id } = req.params;
+        const { id } = req.params;
     try {
         // let updatedUsers = await Users.findByIdAndUpdate(id, {
         //     first_name: req.body.first_name,
@@ -61,7 +61,7 @@ module.exports = {
             if (user.password != req.body.password) {
                 next({status: 401, send: {msg: "Password incorrecto"}}) 
             }
-            //delete user.password
+            delete user.password
             let token = jwt.create(user)
             next({status: 200, send: {msg: "Acceso autorizado", token: token}})
         } catch (error) {
