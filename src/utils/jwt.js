@@ -24,3 +24,5 @@ module.exports = {
         })
     }
 }
+
+//codigo con el JWT
