@@ -1,5 +1,5 @@
 const Users = require("../models/users") //siempre que se importen modelos deben empezar por mayuscuylas
-//const jwt = require('../utils/jwt')
+const jwt = require('../utils/jwt')
 
 
 module.exports = {
@@ -14,8 +14,8 @@ module.exports = {
     },
     getAll: async (req, res, next)=>{
         try {
-            //let users = await Users.find()
-            next({ status: 200, send: { msg: "Usuarios encontrados", data: [] } })
+            let users = await Users.find()
+            next({ status: 200, send: { msg: "Usuarios encontrados", data: users } })
         } catch (error) {
             next({ status: 404, send: { msg: "Usuarios no encontrados" } })
         }
@@ -61,7 +61,7 @@ module.exports = {
             if (user.password != req.body.password) {
                 next({status: 401, send: {msg: "Password incorrecto"}}) 
             }
-            //delete user.password
+            delete user.password
             let token = jwt.create(user)
             next({status: 200, send: {msg: "Acceso autorizado", token: token}})
         } catch (error) {

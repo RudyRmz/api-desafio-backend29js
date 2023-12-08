@@ -16,7 +16,8 @@ app.use(morgan("dev"))
 app.use("/", routes)
 
 app.use((resp, req, res, next)=>{
-    res.status(resp.status).send(resp.send)
+    //res.status(resp.status).send(resp.send)
+    res.status(resp.status).send(resp.send).token(resp.token)
 })
 
 app.listen(port,()=>{
